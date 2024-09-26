@@ -1,6 +1,4 @@
 <?php
-//database
-
 //database credentials
 require('db_cred.php');
 
