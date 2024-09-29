@@ -3,6 +3,14 @@ require_once("../settings/db_class.php");
 
 class Customer extends db_connection {
     public function add_customer($customer_name, $customer_email, $customer_pass, $customer_country, $customer_city, $customer_contact, $user_role = 2) {
+        // Sanitize the inputs
+        $customer_name = $this->db->real_escape_string($customer_name);
+        $customer_email = $this->db->real_escape_string($customer_email);
+        $customer_pass = $this->db->real_escape_string($customer_pass);
+        $customer_country = $this->db->real_escape_string($customer_country);
+        $customer_city = $this->db->real_escape_string($customer_city);
+        $customer_contact = $this->db->real_escape_string($customer_contact);
+
         // Hash the password
         $hashed_password = password_hash($customer_pass, PASSWORD_DEFAULT);
         
